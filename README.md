@@ -1,0 +1,2 @@
+# jsExcercise
+compiled odin excercises
