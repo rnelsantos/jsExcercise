@@ -11,6 +11,8 @@ left = mergeSort(left)
 right = mergeSort(right)
 
 let merge = []
+
+//sort
 while(left?.length && right?.length){
     (left[0]<right[0]) ?  merge.push(left.splice(0,1)[0]) : merge.push(right.splice(0,1)[0])
 }
@@ -21,5 +23,5 @@ return merge
 }
 
 mergeSort([4,3,2,1])
-console.log(mergeSort([4,3,2,1,9,8,7,6,5,0]))
+console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]))
 
