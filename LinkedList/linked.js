@@ -1,3 +1,20 @@
+
+//node Factory
+const createNode = (val) => {
+    let value = val
+    let nextNode = null
+
+    const setValue = (input) => value = input
+    const setNext = (input) => nextNode = input
+
+    const getValue = () =>  value 
+    const getNext = () => nextNode 
+
+    return {value, nextNode, setValue, setNext, getValue, getNext}
+}
+
+
+//list Factory
 const linkedList = (list) => {
     let head = null
     let tail = null
@@ -33,24 +50,56 @@ const linkedList = (list) => {
         return string
     }
 
+    const size = () => {
+        let temp = head
+        let size = 0
+        while (temp.getNext() !==null) {
+            size++
+            temp = temp.getNext()
+            if (temp.getNext() === null) size++
+        }
+        return size
+    }
+
+    const headNode = () => head
+
+    const tailNode = () => {
+        let temp = head
+        while (temp.getNext() !==null) temp = temp.getNext()
+        return temp
+    }
+
+    const at = (index) => {
+        let temp = head
+        let n = 0
+        while (temp.getNext() !==null) {
+            n++
+            temp = temp.getNext()
+            if (n === index) return temp
+        } 
+    }
+
+    const pop = () => {
+         size()
+    }
+    
+   
+
     
 
-    return {list,prepend,append,toString}
+    return {list,
+            prepend,
+            append,
+            toString,
+            size,
+            headNode,
+            tailNode,
+            at,
+            pop
+        }
 }
 
 
-const createNode = (val) => {
-    let value = val
-    let nextNode = null
-
-    const setValue = (input) => value = input
-    const setNext = (input) => nextNode = input
-
-    const getValue = () =>  value 
-    const getNext = () => nextNode 
-
-    return {value, nextNode, setValue, setNext, getValue, getNext}
-}
 
 
 const list =  linkedList("list")
@@ -61,8 +110,16 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
+list.prepend("fish");
 
-console.log(list.toString())
+
+console.log('linkedList: '+list.toString())
+console.log('size: '+list.size())
+console.log(list.headNode())
+console.log(list.tailNode())
+console.log(list.at(2))
+
+console.log(list.pop())
 
 
 
