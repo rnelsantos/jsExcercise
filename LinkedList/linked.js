@@ -1,21 +1,7 @@
-
-//node Factory
-const createNode = (val) => {
-    let value = val
-    let nextNode = null
-
-    const setValue = (input) => value = input
-    const setNext = (input) => nextNode = input
-
-    const getValue = () =>  value 
-    const getNext = () => nextNode 
-
-    return {value, nextNode, setValue, setNext, getValue, getNext}
-}
-
+import createNode from "./node.js";
 
 //list Factory
-const linkedList = (list) => {
+export default function linkedList (list) {
     let head = null
     let tail = null
 
@@ -148,6 +134,9 @@ const linkedList = (list) => {
 
 
 
+/*
+//FOR TEST PURPOSE
+
 const list =  linkedList("list")  //linkedList: (fish) -> (dog) -> (cat) -> (parrot) -> (lion) -> (hamster) -> (snake) -> (giraffe) -> (turtle) -> null
 
 list.append("dog");
@@ -175,10 +164,4 @@ list.removeAt(8) // removed: giraffe
 
 console.log('linkedList: '+list.toString())  //linkedList: (fish) -> (dog) -> (cat) -> (parrot) -> (lion) -> (racoon) -> (hamster) -> (snake) -> null
 
-
-
-/*
-const Dog = createNode();
-Dog.setValue("cat")
-console.log(Dog.getValue())
 */
