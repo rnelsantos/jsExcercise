@@ -80,9 +80,50 @@ const linkedList = (list) => {
     }
 
     const pop = () => {
-         size()
+        console.log(`removed tail: ${at(size()-1).getValue()}`)
+
+        at(size()-1).setValue(null)
+        at(size()-2).setNext(null)
+        
     }
     
+    const contains = (value) => {
+        let temp = head
+        while (temp.getNext() !==null) {
+            if (temp.getValue() === value) return true
+            temp = temp.getNext()
+        }
+        if (temp.getValue() === value) return true
+        return false
+    }
+
+    const find = (value) => {
+        let temp = head
+        let n = 0
+        while (temp.getNext() !==null) {
+            
+            if (temp.getValue() === value) return n
+            temp = temp.getNext()
+            n++
+        }
+        if (temp.getValue() === value) return n
+        return null
+    }
+
+    const insertAt = (value,index) => {
+        let newNode = createNode(value)
+        let temp = at(index)
+        at(index-1).setNext(newNode)
+        newNode.setNext(temp)
+    }
+
+
+    const removeAt = (index) => {
+        console.log('removed: '+at(index).getValue())
+        at(index-1).setNext(at(index).getNext())
+        
+    }
+
    
 
     
@@ -95,32 +136,44 @@ const linkedList = (list) => {
             headNode,
             tailNode,
             at,
-            pop
+            pop,
+            contains,
+            find,
+            insertAt,
+            removeAt
+
         }
 }
 
 
 
 
-const list =  linkedList("list")
+const list =  linkedList("list")  //linkedList: (fish) -> (dog) -> (cat) -> (parrot) -> (lion) -> (hamster) -> (snake) -> (giraffe) -> (turtle) -> null
 
 list.append("dog");
 list.append("cat");
 list.append("parrot");
+list.append("lion");
 list.append("hamster");
 list.append("snake");
+list.append("giraffe");
 list.append("turtle");
 list.prepend("fish");
 
 
 console.log('linkedList: '+list.toString())
-console.log('size: '+list.size())
-console.log(list.headNode())
+console.log('size: '+list.size()) //9
+console.log(list.headNode()) 
 console.log(list.tailNode())
-console.log(list.at(2))
+console.log(list.at(2))  //cat
 
-console.log(list.pop())
+list.pop() //removed tail: turtle
+console.log(list.contains("cat"))  //true
+console.log("find index of cat: "+list.find("cat"))  //2
+list.insertAt("racoon",5) 
+list.removeAt(8) // removed: giraffe
 
+console.log('linkedList: '+list.toString())  //linkedList: (fish) -> (dog) -> (cat) -> (parrot) -> (lion) -> (racoon) -> (hamster) -> (snake) -> null
 
 
 
